@@ -1,116 +1,109 @@
-<<<<<<< HEAD
-# Welcome to your Lovable project
+# Aiding Eyes - AI-Powered Assistive Mobility Tool for Visually Impaired
 
-## Project info
+**Aiding Eyes** is an AI-powered web application that processes uploaded videos to detect obstacles, traffic signs, vehicles, and pedestrians using YOLOv8 object detection. It generates real-time audio narration guidance for visually impaired users to navigate safely.
 
-**URL**: https://lovable.dev/projects/1a827aed-c4b3-4599-8e89-cf64347861f5
-=======
-# Welcome to Echo Safe
+## ✨ Features
 
-## This project is titled as ECHO SAFE – AI-Powered Assistive Mobility Tool
+- 🎥 **Video Upload & Recording** - Drag & drop or webcam recording
+- 🧠 **Dual YOLOv8 Detection** - Official + custom-trained models
+- 🔊 **Text-to-Speech Narration** - Real-time audio guidance
+- 🎨 **Visual Overlays** - Bounding boxes on detected objects
+- 🛡️ **Secure Authentication** - Clerk JWT token verification
+- 📱 **Responsive UI** - React + TypeScript + shadcn/ui
+- 🚀 **FastAPI Backend** - Production-ready API server
 
+## 🏗️ Tech Stack
 
-ECHO SAFE is an intelligent vision-based companion for visually impaired users, detecting obstacles, traffic elements, and surroundings in real time. It provides instant audio feedback to enhance safety, accessibility, and independent mobility. Built with empathy-driven AI, it empowers users to navigate their environment confidently.
+| Frontend | Backend | AI/ML | Infrastructure |
+|----------|---------|-------|----------------|
+| React 18 | FastAPI | YOLOv8 | Supabase |
+| TypeScript | Python 3.12 | PyTorch | Clerk Auth |
+| Vite | Uvicorn | Transformers | SQLite |
+| shadcn/ui | OpenCV | MoviePy | Docker-ready |
 
-## Key Features
-- Real-time detection of critical elements: zebra crossings, traffic lights, vehicles, and obstacles etc..
-- Instant voice guidance for safe navigation.
-- Accessibility-focused UI for visually impaired users.
-- Scalable architecture supporting future enhancements like GPS, multilingual voice, and offline AI models.
+## 🚀 Quick Start
 
-  
-## What technologies are used for this project?
+### Prerequisites
+- Python 3.12+
+- Node.js 18+
+- Git
 
-This project is built with:
+### 1. Clone & Setup
 
-- **Frontend:** React, Tailwind CSS, Framer Motion
-- **Backend:** FastAPI, Python
-- **AI/ML:** YOLOv8 for object detection
-- **Audio:**  SpeechSynthesis API (Web Speech API) for narration
+```bash
+git clone <your-repo-url>
+cd aiding-eyes
 
+2. Backend Setup
+cd backend
+pip install -r requirements.txt
+# Copy your Supabase/Clerk keys to .env
+cp .env.example .env
+uvicorn main:app --reload --host 0.0.0.0 --port 5000
 
-
-
-
-
-
-
->>>>>>> 10b8075a2485ec883ec9933955b0959377f3e106
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-<<<<<<< HEAD
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/1a827aed-c4b3-4599-8e89-cf64347861f5) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-=======
->>>>>>> 10b8075a2485ec883ec9933955b0959377f3e106
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Frontend Setup
+cd frontend
+npm install
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+4. Access Application
+Backend: http://localhost:5000
+Frontend: http://localhost:8080
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-<<<<<<< HEAD
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1a827aed-c4b3-4599-8e89-cf64347861f5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-=======
+📁 Project Structure
+aiding-eyes/
+├── backend/
+│   ├── main.py                 # FastAPI server
+│   ├── final_implementation_2.py # YOLO + TTS processing
+│   ├── requirements.txt        # Python dependencies
+│   ├── uploads/               # Temporary uploads
+│   └── processed/             # Output videos
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── VideoUpload.tsx    # Main upload component
+│   ├── package.json
+│   └── vite.config.ts
+└── README.md
 
 
+🔧 Environment Variables
+backend/.env
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
 
->>>>>>> 10b8075a2485ec883ec9933955b0959377f3e106
-"# YOLOV8-Tool" 
+frontend/.env
+VITE_CLERK_PUBLISHABLE_KEY=pk_test_...
+VITE_BACKEND_URL=http://localhost:5000
+
+
+🧪 Model Files Required
+Place these files in backend/:
+yolov8n.pt          # Official YOLOv8 nano (auto-downloads)
+best.pt            # Your custom-trained model
+
+🎯 Usage
+Upload video via drag & drop or webcam recording
+Process - AI detects obstacles & generates narration
+Download processed video with bounding boxes + audio guidance
+Real-time feedback for safe navigation
+
+🛠️ Development Commands
+Backend
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 5000
+
+Frontend
+cd frontend
+npm install
+npm run dev
+
+📈 Performance
+Frame Skip: Adjustable (default: 5)
+Memory Usage: ~2-4GB per video
+Processing Time: 10-30s for 30s video
+Supported Formats: MP4, AVI, MOV, WMV, MKV
+
+Built with ❤️ for accessibility
