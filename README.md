@@ -1,5 +1,9 @@
 # Aiding Eyes - AI-Powered Assistive Mobility Tool for Visually Impaired
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-brightgreen.svg)](https://fastapi.tiangolo.com/)
+
 **Aiding Eyes** is an AI-powered web application that processes uploaded videos to detect obstacles, traffic signs, vehicles, and pedestrians using YOLOv8 object detection. It generates real-time audio narration guidance for visually impaired users to navigate safely.
 
 ## ✨ Features
@@ -33,24 +37,25 @@
 ```bash
 git clone <your-repo-url>
 cd aiding-eyes
-
 2. Backend Setup
+bash
 cd backend
 pip install -r requirements.txt
 # Copy your Supabase/Clerk keys to .env
 cp .env.example .env
 uvicorn main:app --reload --host 0.0.0.0 --port 5000
-
 3. Frontend Setup
+bash
 cd frontend
 npm install
 npm run dev
-
 4. Access Application
 Backend: http://localhost:5000
+
 Frontend: http://localhost:8080
 
 📁 Project Structure
+text
 aiding-eyes/
 ├── backend/
 │   ├── main.py                 # FastAPI server
@@ -66,44 +71,74 @@ aiding-eyes/
 │   ├── package.json
 │   └── vite.config.ts
 └── README.md
-
-
 🔧 Environment Variables
 backend/.env
+
+text
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
-
 frontend/.env
+
+text
 VITE_CLERK_PUBLISHABLE_KEY=pk_test_...
 VITE_BACKEND_URL=http://localhost:5000
-
-
 🧪 Model Files Required
 Place these files in backend/:
+
+text
 yolov8n.pt          # Official YOLOv8 nano (auto-downloads)
 best.pt            # Your custom-trained model
-
 🎯 Usage
 Upload video via drag & drop or webcam recording
+
 Process - AI detects obstacles & generates narration
+
 Download processed video with bounding boxes + audio guidance
+
 Real-time feedback for safe navigation
 
 🛠️ Development Commands
 Backend
+bash
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 5000
-
 Frontend
+bash
 cd frontend
 npm install
 npm run dev
-
+📱 API Endpoints
+Method	Endpoint	Description
+POST	/process-video	Upload & process video
+GET	/processed/*	Serve processed videos
+🐛 Troubleshooting
+Issue	Solution
+ModuleNotFoundError: cv2	pip install opencv-python numpy==1.26.4
+403 Forbidden	Add Clerk JWT token in Authorization header
+MemoryError	Increase frame_skip=10 in processing
+NumPy GCC error	Use pip install "numpy<2.0"
 📈 Performance
 Frame Skip: Adjustable (default: 5)
+
 Memory Usage: ~2-4GB per video
+
 Processing Time: 10-30s for 30s video
+
 Supported Formats: MP4, AVI, MOV, WMV, MKV
+
+⚖️ License
+MIT License - see LICENSE file for details.
+
+🙌 Acknowledgments
+Springboard Internship
+
+Ultralytics YOLOv8
+
+Hugging Face Transformers
+
+Clerk.dev Authentication
+
+Supabase Database
 
 Built with ❤️ for accessibility
